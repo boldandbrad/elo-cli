@@ -1,0 +1,25 @@
+# ide
+.idea
+*.iml
+.project
+.vscode
+.markdownlint.yaml
+
+# os
+.DS_Store
+
+# pyenv/nodenv and venv
+.python-version
+.node-version
+.venv
+
+# python artifacts
+__pycache__/
+*.egg-info/
+*.py[cod]
+build/
+dist/
+
+# test
+.coverage
+coverage.xml
