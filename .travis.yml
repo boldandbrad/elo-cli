@@ -1,25 +1,52 @@
-# ide
-.idea
-*.iml
-.project
-.vscode
-.markdownlint.yaml
+language: python
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
+  - "3.9"
+  - "nightly"
 
-# os
-.DS_Store
+install:
+  - pip install --upgrade pip
+  - pip install pip-tools
+  - pip-compile
+  - pip install -r requirements.txt
+  - pip install .
 
-# pyenv/nodenv and venv
-.python-version
-.node-version
-.venv
+script:
+  - pytest --cov-report=xml --cov=./elocli/
 
-# python artifacts
-__pycache__/
-*.egg-info/
-*.py[cod]
-build/
-dist/
+after_success:
+  - codecov
 
-# test
-.coverage
-coverage.xml
+deploy:
+  # deploy develop branch to test pypi
+  - provider: pypi
+    server: https://test.pypi.org/legacy/
+    username: __token__
+    password: $PYPI_TEST_TOKEN
+    skip_cleanup: true
+    distributions: sdist bdist_wheel
+    on:
+      branch: develop
+      python: "3.8"
+
+  # deploy release tag to pypi
+  - provider: pypi
+    username: __token__
+    password: $PYPI_TOKEN
+    skip_cleanup: true
+    distributions: sdist bdist_wheel
+    on:
+      tags: true
+      python: "3.8"
+
+  # deploy release tag docs to github pages
+  - provider: pages
+    local_dir: docs
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    keep_history: true
+    on:
+      tags: true
+      python: "3.8"
