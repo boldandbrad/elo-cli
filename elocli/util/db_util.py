@@ -10,7 +10,9 @@ from elocli.util.env_util import get_db_path
 # contact config to get db path
 # create db from config
 
-def db_init(db: SqliteDatabase, name: str):
+def db_init(name: str):
+    db = SqliteDatabase(None)
+
     db_path = get_db_path()
     db.bind([Player, Match])
     db.init(db_path + '/' + name + '.db', pragmas={'foreign_keys': 1})
@@ -23,6 +25,3 @@ def db_connect(db: SqliteDatabase):
 
 def db_close(db: SqliteDatabase):
     db.close()
-
-def get_dbs():
-    pass

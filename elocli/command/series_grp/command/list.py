@@ -7,9 +7,6 @@ import click
 from elocli.util.config_util import get_config_value
 from elocli.util.env_util import get_db_path
 
-# from elocli.model.base import db
-
-
 @click.command(
     help='List all created series.'
 )
@@ -19,7 +16,6 @@ from elocli.util.env_util import get_db_path
 def list_series():
     active_series = get_config_value('active-series')
     db_path = get_db_path()
-    # active_db = db_init(db, active_series)
 
     db_files = next(walk(db_path))[2]
 

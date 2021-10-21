@@ -1,9 +1,9 @@
 
 import click
-from loguru import logger
+# from loguru import logger
 
-from elocli.command.player_cmds.add import add_player
-from elocli.command.player_cmds.list import list_players
+from .command.add import add_player
+from .command.list import list_players
 
 
 @click.group(

@@ -2,9 +2,9 @@
 import click
 from loguru import logger
 
-from elocli.command.series_cmds.add import add_series
-from elocli.command.series_cmds.list import list_series
-from elocli.command.series_cmds.set import set_series
+from .command.add import add_series
+from .command.list import list_series
+from .command.set import set_series
 
 
 @click.group(

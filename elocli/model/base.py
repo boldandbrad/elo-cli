@@ -1,9 +1,6 @@
 
 from peewee import *
 
-# from elocli.util.db_util import db
-db = SqliteDatabase(None)
-
 
 class Base(Model):
     """Base peewee database model class."""

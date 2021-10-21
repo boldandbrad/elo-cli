@@ -1,11 +1,12 @@
 
 import click
 
-from elocli.util.log_util import log_init
-from elocli.util.config_util import config_init
+from .util.log_util import log_init
+from .util.config_util import config_init
 
-from elocli.command.series import series
-from elocli.command.player import player
+from .command.series_grp.series import series
+from .command.player_grp.player import player
+from .command.match_grp.match import match
 
 
 @click.group(
@@ -29,6 +30,7 @@ def cli():
 
 cli.add_command(series, 'series')
 cli.add_command(player, 'player')
+cli.add_command(match, 'match')
 
 if __name__ == "__main__":
     cli()
