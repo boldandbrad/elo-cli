@@ -26,6 +26,7 @@ setup_info = dict(
     include_package_data=True,
     install_requires=[
         'click>=7',
+        'peewee',
         'loguru>=0.5.0',
         'pytest',
         'pytest-cov',
