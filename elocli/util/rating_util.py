@@ -2,6 +2,8 @@
 import math
 from typing import Tuple
 
+from elocli.model.player import Player
+
 PRECISION = 1
 K_FACTOR = 20
 WIN = 1
@@ -96,3 +98,24 @@ def update_elos(home_elo: float, away_elo: float, home_score: int, away_score: i
     net_change = abs(orig_home_elo - home_elo)
 
     return home_elo, away_elo, net_change
+
+def update_stats(home_player: Player, away_player: Player,
+                 home_score: int, away_score: int) -> None:
+    """Update both player's statistics from match outcome."""
+    home_player.goals_for += home_score
+    home_player.goals_against += away_score
+    away_player.goals_for += away_score
+    away_player.goals_against += home_score
+
+    # home won
+    if home_score > away_score:
+        home_player.wins += 1
+        away_player.losses += 1
+    # away won
+    elif home_score < away_score:
+        home_player.losses += 1
+        away_player.wins += 1
+    # draw
+    else:
+        home_player.draws += 1
+        away_player.draws += 1

@@ -1,16 +1,15 @@
 
-from typing import Optional, Tuple
+from typing import Tuple
 
 import click
 
 from elocli.util.db_util import db_init, db_connect, db_close
 from elocli.util.config_util import get_config_value
+from elocli.util.rating_util import update_elos, update_stats
 
 from elocli.model.match import Match
 
 from elocli.service import player_service
-from elocli.service import match_service
-
 
 @click.command(
     help='Add a match to the active series.'
@@ -38,18 +37,26 @@ def add_match(home: Tuple[str, int], away: Tuple[str, int], sd: bool):
 
     db_connect(active_db)
 
-    home_score = int(home[1])
-    away_score = int(away[1])
+    # TODO: check for invalid args
 
     # TODO: check if players do not yet exist
     home_player = player_service.get_by_name(home[0])
     away_player = player_service.get_by_name(away[0])
 
-    # TODO: update player elos based on outcome
-    rating_change = 0
+    # grab scores from args
+    home_score = int(home[1])
+    away_score = int(away[1])
 
-    # TODO: update player stats based on outcome
+    # calculate updated player elos based on match outcome
+    home_player.elo, away_player.elo, rating_change = update_elos(
+        home_player.elo,
+        away_player.elo,
+        home_score,
+        away_score
+    )
 
+    # update player stats based on outcome
+    update_stats(home_player, away_player, home_score, away_score)
 
     home_player.save()
     away_player.save()
