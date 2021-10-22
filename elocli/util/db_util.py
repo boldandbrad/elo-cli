@@ -1,4 +1,3 @@
-
 from os import path, walk
 
 from typing import List
@@ -15,16 +14,19 @@ def db_init(name: str):
 
     db_path = get_db_path()
     db.bind([Player, Match])
-    db.init(db_path + '/' + name + '.db', pragmas={'foreign_keys': 1})
+    db.init(db_path + "/" + name + ".db", pragmas={"foreign_keys": 1})
     with db:
         db.create_tables([Player, Match])
     return db
 
+
 def db_connect(db: SqliteDatabase):
     db.connect()
 
+
 def db_close(db: SqliteDatabase):
     db.close()
+
 
 def get_dbs() -> List[str]:
     db_path = get_db_path()

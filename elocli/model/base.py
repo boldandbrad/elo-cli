@@ -1,4 +1,3 @@
-
 from peewee import Model
 
 
@@ -11,6 +10,7 @@ class Base(Model):
     def __str__(self):
         return str(self.__dict__)
 
-    class Meta():
+    class Meta:
         """Define database table options."""
+
         legacy_table_names = False

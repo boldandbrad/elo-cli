@@ -1,24 +1,22 @@
-
 import json
 import os
 
 from elocli.util.env_util import get_config_path
 
 defaults = {
-    'active-series': 'default',
+    "active-series": "default",
 }
 
-CONFIG_FILE = 'config.json'
+CONFIG_FILE = "config.json"
 
 
 def config_init() -> None:
-    """Initialize and check elo-cli user configuration file.
-    """
+    """Initialize and check elo-cli user configuration file."""
     config_path = get_config_path()
 
     # create config file
     if not os.path.isfile(config_path + CONFIG_FILE):
-        with open(config_path + CONFIG_FILE, 'w') as fp:
+        with open(config_path + CONFIG_FILE, "w") as fp:
             json.dump(defaults, fp, indent=4)
     else:
         # TODO: check that existing config is valid
@@ -28,7 +26,7 @@ def config_init() -> None:
 def read_config_file():
     config_path = get_config_path()
 
-    with open(config_path + CONFIG_FILE, 'r') as fp:
+    with open(config_path + CONFIG_FILE, "r") as fp:
         data = fp.read()
 
     conf = json.loads(data)
@@ -38,7 +36,7 @@ def read_config_file():
 def update_config_file(conf: dict) -> None:
     config_path = get_config_path()
 
-    with open(config_path + CONFIG_FILE, 'w') as fp:
+    with open(config_path + CONFIG_FILE, "w") as fp:
         json.dump(conf, fp, indent=4)
 
 
@@ -49,6 +47,7 @@ def set_default_configs() -> dict:
 def get_config_value(key: str) -> str:
     conf = read_config_file()
     return conf[key]
+
 
 def set_config_value(key: str, val: str) -> str:
     conf = read_config_file()

@@ -1,7 +1,12 @@
-
 import datetime
 
-from peewee import ForeignKeyField, IntegerField, BooleanField, FloatField, DateTimeField
+from peewee import (
+    ForeignKeyField,
+    IntegerField,
+    BooleanField,
+    FloatField,
+    DateTimeField,
+)
 
 from .base import Base
 from .player import Player
@@ -9,6 +14,7 @@ from .player import Player
 
 class Match(Base):
     """Database schema for Match table."""
+
     home_player = ForeignKeyField(Player, backref="matches")
     away_player = ForeignKeyField(Player, backref="matches")
     home_score = IntegerField(default=0)

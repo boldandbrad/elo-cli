@@ -1,4 +1,3 @@
-
 import math
 from typing import Tuple
 
@@ -37,15 +36,17 @@ def _score_weight(home_score: int, away_score: int) -> float:
     """
     score_diff = abs(home_score - away_score)
 
-    if (score_diff == 0 or score_diff == 1):
+    if score_diff == 0 or score_diff == 1:
         return 1
-    elif (score_diff == 2):
+    elif score_diff == 2:
         return 1.25
     else:
         return (11 + score_diff) / 10
 
 
-def _calculate_elo(current_elo: float, win_prob: float, weight: float, match_outcome: float) -> float:
+def _calculate_elo(
+    current_elo: float, win_prob: float, weight: float, match_outcome: float
+) -> float:
     """Calculate a side's new elo rating.
 
     Args:
@@ -62,7 +63,9 @@ def _calculate_elo(current_elo: float, win_prob: float, weight: float, match_out
     return round(new_elo, PRECISION)
 
 
-def update_elos(home_elo: float, away_elo: float, home_score: int, away_score: int) -> Tuple[float, float, float]:
+def update_elos(
+    home_elo: float, away_elo: float, home_score: int, away_score: int
+) -> Tuple[float, float, float]:
     """Update both side's elo ratings based on match outcome.
 
     Args:
@@ -99,8 +102,10 @@ def update_elos(home_elo: float, away_elo: float, home_score: int, away_score: i
 
     return home_elo, away_elo, net_change
 
-def update_stats(home_player: Player, away_player: Player,
-                 home_score: int, away_score: int) -> None:
+
+def update_stats(
+    home_player: Player, away_player: Player, home_score: int, away_score: int
+) -> None:
     """Update both player's statistics from match outcome."""
     home_player.goals_for += home_score
     home_player.goals_against += away_score

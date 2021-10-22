@@ -1,4 +1,3 @@
-
 from typing import Tuple
 
 import click
@@ -11,28 +10,18 @@ from elocli.model.match import Match
 
 from elocli.service import player_service
 
-@click.command(
-    help='Add a match to the active series.'
-)
-@click.help_option(
-    '-h', '--help'
-)
+
+@click.command(help="Add a match to the active series.")
+@click.help_option("-h", "--help")
+@click.argument("home", nargs=2)
 @click.argument(
-    'home',
-    nargs=2
-)
-@click.argument(
-    'away',
+    "away",
     nargs=2,
 )
-@click.option(
-    '-s', '--sd',
-    is_flag=True,
-    required=False
-)
+@click.option("-s", "--sd", is_flag=True, required=False)
 def add_match(home: Tuple[str, int], away: Tuple[str, int], sd: bool):
     # TODO: check if series already exists
-    active_series = get_config_value('active-series')
+    active_series = get_config_value("active-series")
     active_db = db_init(active_series)
 
     db_connect(active_db)
@@ -49,10 +38,7 @@ def add_match(home: Tuple[str, int], away: Tuple[str, int], sd: bool):
 
     # calculate updated player elos based on match outcome
     home_player.elo, away_player.elo, rating_change = update_elos(
-        home_player.elo,
-        away_player.elo,
-        home_score,
-        away_score
+        home_player.elo, away_player.elo, home_score, away_score
     )
 
     # update player stats based on outcome
@@ -67,10 +53,10 @@ def add_match(home: Tuple[str, int], away: Tuple[str, int], sd: bool):
         home_score=home_score,
         away_score=away_score,
         sudden_death=sd,
-        rating_change=rating_change
+        rating_change=rating_change,
     )
 
     match.save()
-    print('match recorded')
+    print("match recorded")
 
     db_close(active_db)
