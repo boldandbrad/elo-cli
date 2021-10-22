@@ -1,6 +1,6 @@
-import click
+"""Elo Match Sub Command"""
 
-# from loguru import logger
+import click
 
 from .command.add import add_match
 from .command.list import list_matches
@@ -9,7 +9,7 @@ from .command.list import list_matches
 @click.group(help="Manage matches in the active series.")
 @click.help_option("-h", "--help")
 def match():
-    pass
+    """Manage matches in the active series."""
 
 
 match.add_command(add_match, "add")

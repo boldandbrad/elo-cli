@@ -1,3 +1,5 @@
+"""Match Add Sub Command"""
+
 from typing import Tuple
 
 import click
@@ -20,6 +22,13 @@ from elocli.service import player_service
 )
 @click.option("-s", "--sd", is_flag=True, required=False)
 def add_match(home: Tuple[str, int], away: Tuple[str, int], sd: bool):
+    """Add a match to the active series.
+
+    Args:
+        home (Tuple[str, int]): name and score of home player
+        away (Tuple[str, int]): name and score of away player
+        sd (bool): sudden death
+    """
     # TODO: check if series already exists
     active_series = get_config_value("active-series")
     active_db = db_init(active_series)
@@ -48,8 +57,8 @@ def add_match(home: Tuple[str, int], away: Tuple[str, int], sd: bool):
     away_player.save()
 
     match = Match(
-        home_player=home_player.id,
-        away_player=away_player.id,
+        home_id=home_player.id,
+        away_id=away_player.id,
         home_score=home_score,
         away_score=away_score,
         sudden_death=sd,

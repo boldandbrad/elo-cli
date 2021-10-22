@@ -1,3 +1,5 @@
+"""Database Match Service"""
+
 from typing import List
 
 from peewee import DoesNotExist
@@ -9,7 +11,7 @@ def get_all_ordered() -> List[Match]:
     """Retrieve all matches ordered by number field."""
     try:
         return Match.select().order_by(+Match.number)
-    except DoesNotExist as dne:
+    except DoesNotExist:
         # TODO: log error
         return []
 

@@ -1,3 +1,5 @@
+"""Database Match Model"""
+
 import datetime
 
 from peewee import (
@@ -15,8 +17,8 @@ from .player import Player
 class Match(Base):
     """Database schema for Match table."""
 
-    home_player = ForeignKeyField(Player, backref="matches")
-    away_player = ForeignKeyField(Player, backref="matches")
+    home_id = ForeignKeyField(Player, backref="matches")
+    away_id = ForeignKeyField(Player, backref="matches")
     home_score = IntegerField(default=0)
     away_score = IntegerField(default=0)
     sudden_death = BooleanField(default=False)

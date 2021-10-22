@@ -1,3 +1,5 @@
+"""Player List Sub Command"""
+
 import click
 
 from elocli.util.db_util import db_init, db_connect, db_close
@@ -9,6 +11,7 @@ from elocli.service.player_service import get_all_ordered
 @click.command(help="List all players in the active series.")
 @click.help_option("-h", "--help")
 def list_players():
+    """List all players in the active series."""
     # TODO: check if series already exists
     active_series = get_config_value("active-series")
     active_db = db_init(active_series)

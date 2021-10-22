@@ -1,3 +1,5 @@
+"""Database Base Model"""
+
 from peewee import Model
 
 

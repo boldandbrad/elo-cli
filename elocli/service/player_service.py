@@ -1,3 +1,5 @@
+"""Database Player Service"""
+
 from typing import List, Tuple
 
 from peewee import DoesNotExist
@@ -11,14 +13,14 @@ def get_all_ordered() -> List[Player]:
     """Retrieve all players ordered by rank field."""
     try:
         return Player.select().order_by(-Player.rank)
-    except DoesNotExist as dne:
+    except DoesNotExist:
         # TODO: log error
         return []
 
 
-# def get_by_id(id: int) -> Player:
-#     """Retrieve a player by its id field."""
-#     return Player.get().where(Player.id == id)
+def get_by_id(player_id: int) -> Player:
+    """Retrieve a player by its id field."""
+    return Player.get_by_id(player_id)
 
 
 def get_by_name(name: str) -> Player:

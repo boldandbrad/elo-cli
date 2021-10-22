@@ -1,5 +1,8 @@
+"""Elo Series Sub Command"""
+
 import click
-from loguru import logger
+
+# from loguru import logger
 
 from .command.add import add_series
 from .command.list import list_series
@@ -9,7 +12,7 @@ from .command.set import set_series
 @click.group(help="Manage results series.")
 @click.help_option("-h", "--help")
 def series():
-    pass
+    """Manage results series."""
 
 
 series.add_command(add_series, "add")

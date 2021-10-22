@@ -16,8 +16,8 @@ def config_init() -> None:
 
     # create config file
     if not os.path.isfile(config_path + CONFIG_FILE):
-        with open(config_path + CONFIG_FILE, "w") as fp:
-            json.dump(defaults, fp, indent=4)
+        with open(config_path + CONFIG_FILE, "w") as file:
+            json.dump(defaults, file, indent=4)
     else:
         # TODO: check that existing config is valid
         pass

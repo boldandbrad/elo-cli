@@ -31,6 +31,9 @@ def db_close(db: SqliteDatabase):
 def get_dbs() -> List[str]:
     db_path = get_db_path()
     db_files = next(walk(db_path))[2]
-    for idx, db_file in enumerate(db_files):
-        db_files[idx] = path.splitext(db_file)[0]
-    return db_files
+    series = [
+        path.splitext(db_file)[0]
+        for db_file in db_files
+        if path.splitext(db_file)[1] == ".db"
+    ]
+    return series

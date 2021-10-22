@@ -107,10 +107,10 @@ def update_stats(
     home_player: Player, away_player: Player, home_score: int, away_score: int
 ) -> None:
     """Update both player's statistics from match outcome."""
-    home_player.goals_for += home_score
-    home_player.goals_against += away_score
-    away_player.goals_for += away_score
-    away_player.goals_against += home_score
+    home_player.points_for += home_score
+    home_player.points_against += away_score
+    away_player.points_for += away_score
+    away_player.points_against += home_score
 
     # home won
     if home_score > away_score:
