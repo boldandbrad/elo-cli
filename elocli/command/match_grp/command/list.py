@@ -1,7 +1,7 @@
 
 import click
 
-from elocli.util.db_util import db_init, db_connect, db_close
+from elocli.util.db_util import db_init, db_connect, db_close, get_dbs
 from elocli.util.config_util import get_config_value
 
 from elocli.service.match_service import get_all_ordered

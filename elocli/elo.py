@@ -18,6 +18,7 @@ from .command.match_grp.match import match
 @click.version_option(
     None,  # use version auto discovery via setuptools
     '-v', '--version',
+    package_name='elo-cli',
     message='%(prog)s-cli, v%(version)s'
 )
 def cli():

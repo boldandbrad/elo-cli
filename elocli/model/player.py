@@ -1,5 +1,5 @@
 
-from peewee import *
+from peewee import CharField, FloatField, IntegerField
 
 from .base import Base
 

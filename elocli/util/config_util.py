@@ -32,7 +32,6 @@ def read_config_file():
         data = fp.read()
 
     conf = json.loads(data)
-
     return conf
 
 

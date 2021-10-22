@@ -1,7 +1,7 @@
 
 import datetime
 
-from peewee import *
+from peewee import ForeignKeyField, IntegerField, BooleanField, FloatField, DateTimeField
 
 from .base import Base
 from .player import Player

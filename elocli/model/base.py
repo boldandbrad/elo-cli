@@ -1,5 +1,5 @@
 
-from peewee import *
+from peewee import Model
 
 
 class Base(Model):
@@ -13,5 +13,4 @@ class Base(Model):
 
     class Meta():
         """Define database table options."""
-        # database = db
         legacy_table_names = False

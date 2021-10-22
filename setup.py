@@ -1,6 +1,7 @@
+
 from setuptools import setup, find_packages
 
-# parse version number from euchrecli/__init__.py:
+# parse version number from elocli/__init__.py:
 with open('elocli/__init__.py') as f:
     info = {}
     for line in f.readlines():
@@ -25,8 +26,8 @@ setup_info = dict(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'click>=7',
-        'peewee',
+        'click>=8',
+        'peewee>=3',
         'loguru>=0.5.0',
         'pytest',
         'pytest-cov',
