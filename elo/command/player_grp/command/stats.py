@@ -10,7 +10,7 @@ from elo.service.player_service import get_by_name
 
 @click.command(help="Print a player's stats from the active series.")
 @click.help_option("-h", "--help")
-@click.argument("name", required=True)
+@click.argument("name", type=str, required=True)
 def stats_player(name: str):
     """Print a player's stats from the active series.
 
@@ -24,6 +24,10 @@ def stats_player(name: str):
     db_connect(active_db)
 
     player = get_by_name(name)
+    if not player:
+        print(f"Player '{name}' does not exist. No stats found.")
+        exit()
+
     matches_played = player.wins + player.losses + player.draws
     point_diff = player.points_for - player.points_against
 
