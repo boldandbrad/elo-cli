@@ -1,7 +1,7 @@
 import math
 from typing import Tuple
 
-from elocli.model.player import Player
+from elo.model.player import Player
 
 PRECISION = 1
 K_FACTOR = 20

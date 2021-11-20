@@ -4,7 +4,7 @@ from typing import List
 
 from peewee import DoesNotExist
 
-from elocli.model.match import Match
+from elo.model.match import Match
 
 
 def get_all_ordered() -> List[Match]:

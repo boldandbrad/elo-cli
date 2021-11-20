@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
-# parse version number from elocli/__init__.py:
-with open("elocli/__init__.py") as f:
+# parse version number from elo/__init__.py:
+with open("elo/__init__.py") as f:
     info = {}
     for line in f.readlines():
         if line.startswith("version"):
@@ -24,24 +24,16 @@ setup_info = dict(
     },
     packages=find_packages(),
     include_package_data=True,
-    install_requires=[
-        "click>=8",
-        "peewee>=3",
-        "loguru>=0.5.0",
-        "pytest",
-        "pytest-cov",
-        "pytest-mock",
-        "codecov",
-        "black",
-    ],
-    python_requires=">=3.6",
+    install_requires=["click>=8", "peewee>=3", "loguru>=0.5.0"],
+    extras_require={"dev": ["black", "pytest", "pytest-cov", "pytest-mock", "codecov"]},
+    python_requires=">=3.8",
     classifiers=[
-        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.8",
         "License :: OSI Approved :: MIT License",
     ],
     entry_points="""
         [console_scripts]
-        elo=elocli.elo:cli
+        elo=elo.elo:cli
     """,
 )
 

@@ -2,8 +2,8 @@
 
 import click
 
-from elocli.util.db_util import get_dbs
-from elocli.util.config_util import get_config_value
+from elo.util.db_util import get_dbs
+from elo.util.config_util import get_config_value
 
 
 @click.command(help="List all created series.")

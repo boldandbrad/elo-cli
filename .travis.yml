@@ -9,12 +9,12 @@ python:
 install:
   - pip install --upgrade pip
   - pip install pip-tools
-  - pip-compile
+  - pip-compile --extra dev
   - pip install -r requirements.txt
   - pip install .
 
 script:
-  - pytest --cov-report=xml --cov=./elocli/
+  - pytest --cov-report=xml --cov=./elo/
 
 after_success:
   - codecov

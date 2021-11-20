@@ -4,13 +4,13 @@ from typing import Tuple
 
 import click
 
-from elocli.util.db_util import db_init, db_connect, db_close
-from elocli.util.config_util import get_config_value
-from elocli.util.rating_util import update_elos, update_stats
+from elo.util.db_util import db_init, db_connect, db_close
+from elo.util.config_util import get_config_value
+from elo.util.rating_util import update_elos, update_stats
 
-from elocli.model.match import Match
+from elo.model.match import Match
 
-from elocli.service import player_service
+from elo.service import player_service
 
 
 @click.command(help="Add a match to the active series.")

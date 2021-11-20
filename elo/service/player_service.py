@@ -4,9 +4,9 @@ from typing import List, Tuple
 
 from peewee import DoesNotExist
 
-from elocli.model.player import Player
+from elo.model.player import Player
 
-# from elocli.util import out_util
+# from elo.util import out_util
 
 
 def get_all_ordered() -> List[Player]:

@@ -2,10 +2,10 @@
 
 import click
 
-from elocli.util.db_util import db_init, db_connect, db_close
-from elocli.util.config_util import get_config_value
+from elo.util.db_util import db_init, db_connect, db_close
+from elo.util.config_util import get_config_value
 
-from elocli.service.player_service import get_or_create_by_name
+from elo.service.player_service import get_or_create_by_name
 
 
 @click.command(help="Add a player to the active series.")

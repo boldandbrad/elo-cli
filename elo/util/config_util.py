@@ -1,7 +1,7 @@
 import json
 import os
 
-from elocli.util.env_util import get_config_path
+from elo.util.env_util import get_config_path
 
 defaults = {
     "active-series": "default",

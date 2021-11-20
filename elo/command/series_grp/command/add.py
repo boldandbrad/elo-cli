@@ -2,8 +2,8 @@
 
 import click
 
-from elocli.util.db_util import db_init
-from elocli.util.config_util import set_config_value
+from elo.util.db_util import db_init
+from elo.util.config_util import set_config_value
 
 
 @click.command(help="Add and activate a new series.")

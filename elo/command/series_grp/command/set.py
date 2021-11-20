@@ -2,10 +2,10 @@
 
 import click
 
-# from elocli.util.db_util import db_init
-from elocli.util.config_util import set_config_value
+# from elo.util.db_util import db_init
+from elo.util.config_util import set_config_value
 
-# from elocli.model.base import db
+# from elo.model.base import db
 
 
 @click.command(help="Set an existing series to active.")

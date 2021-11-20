@@ -2,10 +2,10 @@
 
 import click
 
-from elocli.util.db_util import db_init, db_connect, db_close
-from elocli.util.config_util import get_config_value
+from elo.util.db_util import db_init, db_connect, db_close
+from elo.util.config_util import get_config_value
 
-from elocli.service import match_service, player_service
+from elo.service import match_service, player_service
 
 
 @click.command(help="List all matches in the active series.")

@@ -3,10 +3,10 @@ from os import path, walk
 from typing import List
 from peewee import SqliteDatabase
 
-from elocli.model.match import Match
-from elocli.model.player import Player
+from elo.model.match import Match
+from elo.model.player import Player
 
-from elocli.util.env_util import get_db_path
+from elo.util.env_util import get_db_path
 
 
 def db_init(name: str):
