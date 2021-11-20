@@ -25,7 +25,11 @@ def get_by_id(player_id: int) -> Player:
 
 def get_by_name(name: str) -> Player:
     """Retrieve a player by its name field."""
-    return Player.select().where(Player.name == name).get()
+    try:
+        return Player.select().where(Player.name == name).get()
+    except DoesNotExist:
+        # TODO: log error
+        return None
 
 
 def get_or_create_by_name(name: str) -> Player:

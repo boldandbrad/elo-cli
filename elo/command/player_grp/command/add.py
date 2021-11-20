@@ -10,7 +10,7 @@ from elo.service.player_service import get_or_create_by_name
 
 @click.command(help="Add a player to the active series.")
 @click.help_option("-h", "--help")
-@click.argument("name", required=True)
+@click.argument("name", type=str, required=True)
 def add_player(name: str):
     """Add a player to the active series.
 
